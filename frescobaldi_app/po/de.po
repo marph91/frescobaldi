@@ -389,7 +389,7 @@ msgstr "Ausschneiden und zuweisen..."
 
 #: ../documentactions.py:217
 msgid "Move to Include File..."
-msgstr ""
+msgstr "In Include-Datei verschieben"
 
 #: ../documentactions.py:218
 msgid "Syntax &Highlighting"
@@ -440,14 +440,12 @@ msgid "Remove &Slurs"
 msgstr "&Bögen entfernen"
 
 #: ../documentactions.py:230
-#, fuzzy
 msgid "Remove &Beams"
-msgstr "Entferne Notenhälse"
+msgstr "&Balken entfernen"
 
 #: ../documentactions.py:231
-#, fuzzy
 msgid "Remove &Ligatures"
-msgstr "&Bögen entfernen"
+msgstr "&Haltebögen entfernen"
 
 #: ../documentactions.py:232
 msgid "Remove &Dynamics"
@@ -820,6 +818,10 @@ msgstr ""
 "\n"
 "\n"
 
+#: ../mainwindow.py:963
+msgid "Goto Line Line Number (1-{}):"
+msgstr "Gehe zu Zeile (1-{}):"
+
 #: ../mainwindow.py:1048
 msgid "Main Toolbar"
 msgstr "Haupt-Werkzeugleiste"
@@ -856,6 +858,10 @@ msgstr "&Befehlszeile/Shell öffnen"
 #: ../mainwindow.py:1203
 msgid "Save Copy or Selection As..."
 msgstr "Speichere &Kopie oder Auswahl unter..."
+
+#: ../mainwindow.py:1293
+msgid "&Rename/Move File..."
+msgstr "Datei umbenennen/verschieben"
 
 #: ../mainwindow.py:1204 ../externalchanges/widget.py:117
 msgid "Save All"
@@ -1015,6 +1021,10 @@ msgstr "Programmfehler mel&den..."
 msgid "&About {appname}..."
 msgstr "Ü&ber {appname}..."
 
+#: ../mainwindow.py:1332
+msgid "&Goto Line..."
+msgstr "&Gehe zu Zeile..."
+
 #: ../matcher.py:131
 msgid "Matching Pai&r"
 msgstr "&Gehe zu passender Klammer"
@@ -1068,10 +1078,20 @@ msgctxt "menu title"
 msgid "&Tools"
 msgstr "&Werkzeuge"
 
+#: ../menu.py:312
+msgctxt "submenu title"
+msgid "Code &Formatting"
+msgstr "Code-Formatierung"
+
 #: ../menu.py:314
 msgctxt "submenu title"
 msgid "&Lyrics"
 msgstr "Liedte&xt"
+
+#: ../menu.py:322
+msgctxt "submenu title"
+msgid "Musical &Transformations"
+msgstr "Musikalische &Transformationen"
 
 #: ../menu.py:326
 msgctxt "submenu title"
@@ -1102,6 +1122,11 @@ msgstr "&Fenster"
 msgctxt "menu title"
 msgid "&Help"
 msgstr "&Hilfe"
+
+#: ../menu.py:420
+msgctxt "submenu title"
+msgid "&Directories"
+msgstr "Ordner"
 
 #: ../musicpos.py:85
 #, python-brace-format
@@ -1137,6 +1162,14 @@ msgstr "Schlie&ßen"
 #: ../panel.py:112
 msgid "Dock/Undock"
 msgstr "Andocken/abdocken "
+
+#: ../panelmanager.py:52
+msgid "&Viewers"
+msgstr "&Ansicht"
+
+#: ../panelmanager.py:60
+msgid "&Structure"
+msgstr "&Struktur"
 
 #: ../popplerdummy.py:41
 #, python-brace-format
@@ -2292,9 +2325,8 @@ msgid "Copy to &Image..."
 msgstr "Als &Bild exportieren..."
 
 #: ../musicview/__init__.py:401
-#, fuzzy
 msgid "Copy Selected &Text"
-msgstr "Ausgewählter Text"
+msgstr "Ausgewählten &Text kopieren"
 
 #: ../musicview/__init__.py:402 ../viewers/__init__.py:469
 msgid "Next Page"
@@ -4272,10 +4304,14 @@ msgstr ""
 "Wenn ausgewählt, werden Dateien nach Möglichkeit in einer laufenden "
 "Programminstanz geöffnet."
 
+#: ../preferences/general.py:260
+msgid "Use custom default file name:"
+msgstr "Standard-Dateinamen verwenden:"
+
 #: ../preferences/general.py:175
 msgid "Session to load if Frescobaldi is started without arguments"
 msgstr ""
-"Sitzung, die geladen wird, wenn Frescobaldi ohne Argumente gestarted wird"
+"Sitzung, die geladen wird, wenn Frescobaldi ohne Argumente gestartet wird"
 
 #: ../preferences/general.py:176
 msgid "Start with no session"
@@ -5319,7 +5355,7 @@ msgstr ""
 
 #: ../quickinsert/widget.py:107
 msgid "Direction:"
-msgstr "Richtung:"
+msgstr "Ausrichtung:"
 
 #: ../quickinsert/widget.py:108
 msgid "Up"
@@ -7260,7 +7296,7 @@ msgstr "Auswahl oder aktuelle Zeile duplizieren"
 #: ../snippet/builtin.py:412
 msgctxt "snippet: add comment characters"
 msgid "Comment"
-msgstr "Auskommentieren"
+msgstr "Kommentieren"
 
 #: ../snippet/builtin.py:464
 msgctxt "snippet: remove comment characters"
