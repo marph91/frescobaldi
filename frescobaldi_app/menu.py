@@ -312,6 +312,7 @@ def menu_tools_format(mainwindow):
     m = Menu(_('submenu title', "Code &Formatting"), mainwindow)
     m.setIcon(icons.get('document-edit'))
     ac = documentactions.get(mainwindow).actionCollection
+    m.addAction(ac.tools_close_brackets_auto)
     m.addAction(ac.tools_indent_auto)
     m.addAction(ac.tools_indent_indent)
     m.addAction(ac.tools_reformat)

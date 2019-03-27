@@ -41,6 +41,7 @@ import cursorkeys
 import open_file_at_cursor
 
 metainfo.define('auto_indent', True)
+metainfo.define('auto_close_brackets', True)
 metainfo.define('position', 0)
 
 
@@ -53,6 +54,7 @@ class View(QPlainTextEdit):
     - it determines tab width from the document variables (defaulting to 8 characters)
     - it stores the cursor position in the metainfo
     - it runs the auto_indenter when enabled (also checked via metainfo)
+    - it closes brackets automatically when enabled (also checked via metainfo)
 
     """
     def __init__(self, document):
@@ -159,6 +161,22 @@ class View(QPlainTextEdit):
                 # fix subsequent vertical moves
                 cursor.setPosition(cursor.position())
                 self.setTextCursor(cursor)
+        if metainfo.info(self.document()).auto_close_brackets:
+            cursor = self.textCursor()
+            if ev.text() == '{':
+                cursor.insertText('}')
+                cursor.movePosition(QTextCursor.Left)
+            elif ev.text() == '[':
+                cursor.insertText(']')
+                cursor.movePosition(QTextCursor.Left)
+            elif ev.text() == '(':
+                cursor.insertText(')')
+                cursor.movePosition(QTextCursor.Left)
+            elif ev.text() == '<':
+                cursor.insertText('>')
+                cursor.movePosition(QTextCursor.Left)
+            self.setTextCursor(cursor)
+            
 
     def focusOutEvent(self, ev):
         """Reimplemented to store the cursor position on focus out."""

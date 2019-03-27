@@ -399,6 +399,10 @@ msgstr "&Syntax hervorheben"
 msgid "View File or Definition at &Cursor"
 msgstr "Zeige &Datei oder Definition beim Cursor an"
 
+#: ../documentactions.py:254
+msgid "Automatically Close &Brackets"
+msgstr "&Klammern automatisch schließen"
+
 #: ../documentactions.py:220
 msgid "&Automatic Indent"
 msgstr "&Automatische Einrückung"

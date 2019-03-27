@@ -47,6 +47,7 @@ class DocumentActions(plugin.MainWindowPlugin):
         ac.edit_cut_assign.triggered.connect(self.cutAssign)
         ac.edit_move_to_include_file.triggered.connect(self.moveToIncludeFile)
         ac.view_highlighting.triggered.connect(self.toggleHighlighting)
+        ac.tools_close_brackets_auto.triggered.connect(self.toggleAuto_close_brackets)
         ac.tools_indent_auto.triggered.connect(self.toggleAuto_indent)
         ac.tools_indent_indent.triggered.connect(self.re_indent)
         ac.tools_reformat.triggered.connect(self.reFormat)
@@ -74,6 +75,7 @@ class DocumentActions(plugin.MainWindowPlugin):
             highlighter.highlighter(doc)
         ac = self.actionCollection
         ac.view_highlighting.setChecked(minfo.highlighting)
+        ac.tools_close_brackets_auto.setChecked(minfo.auto_close_brackets)
         ac.tools_indent_auto.setChecked(minfo.auto_indent)
 
     def updateSelectionActions(self, selection):
@@ -124,6 +126,11 @@ class DocumentActions(plugin.MainWindowPlugin):
     def toggleAuto_indent(self):
         minfo = metainfo.info(self.currentDocument())
         minfo.auto_indent = not minfo.auto_indent
+        self.updateOtherDocActions()
+
+    def toggleAuto_close_brackets(self):
+        minfo = metainfo.info(self.currentDocument())
+        minfo.auto_close_brackets = not minfo.auto_close_brackets
         self.updateOtherDocActions()
 
     def re_indent(self):
@@ -210,6 +217,8 @@ class Actions(actioncollection.ActionCollection):
         self.view_highlighting = QAction(parent)
         self.view_highlighting.setCheckable(True)
         self.view_goto_file_or_definition = QAction(parent)
+        self.tools_close_brackets_auto = QAction(parent)
+        self.tools_close_brackets_auto.setCheckable(True)
         self.tools_indent_auto = QAction(parent)
         self.tools_indent_auto.setCheckable(True)
         self.tools_indent_indent = QAction(parent)
@@ -242,6 +251,7 @@ class Actions(actioncollection.ActionCollection):
         self.edit_move_to_include_file.setText(_("Move to Include File..."))
         self.view_highlighting.setText(_("Syntax &Highlighting"))
         self.view_goto_file_or_definition.setText(_("View File or Definition at &Cursor"))
+        self.tools_close_brackets_auto.setText(_("Automatically Close &Brackets"))
         self.tools_indent_auto.setText(_("&Automatic Indent"))
         self.tools_indent_indent.setText(_("Re-&Indent"))
         self.tools_reformat.setText(_("&Format"))
