@@ -81,6 +81,7 @@ class View(QPlainTextEdit):
         self.toolTipInfo = []
         self.block_at_mouse = None
         self.include_target = []
+        self.detect_enter_key = False
         app.viewCreated(self)
 
     def event(self, ev):
@@ -162,19 +163,31 @@ class View(QPlainTextEdit):
                 cursor.setPosition(cursor.position())
                 self.setTextCursor(cursor)
         if metainfo.info(self.document()).auto_close_brackets:
+            def insert_bracket(bracket: str):
+                cursor.insertText(bracket)
+                cursor.movePosition(QTextCursor.Left)
+                self.detect_enter_key = True
+
             cursor = self.textCursor()
+            if ev.text() == '\r' and self.detect_enter_key:
+                cursor.insertText('\n')
+                indent.auto_indent_block(cursor.block())
+                cursor.movePosition(QTextCursor.Up)
+                indent.increase_indent(cursor)
+                cursor.movePosition(QTextCursor.EndOfLine)
+                self.detect_enter_key = False
+            elif self.detect_enter_key:
+                self.detect_enter_key = False
+
             if ev.text() == '{':
-                cursor.insertText('}')
-                cursor.movePosition(QTextCursor.Left)
+                insert_bracket('}')
             elif ev.text() == '[':
-                cursor.insertText(']')
-                cursor.movePosition(QTextCursor.Left)
+                insert_bracket(']')
             elif ev.text() == '(':
-                cursor.insertText(')')
-                cursor.movePosition(QTextCursor.Left)
+                insert_bracket(')')
             elif ev.text() == '<':
-                cursor.insertText('>')
-                cursor.movePosition(QTextCursor.Left)
+                insert_bracket('>')
+
             self.setTextCursor(cursor)
             
 
